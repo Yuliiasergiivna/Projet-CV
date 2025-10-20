@@ -1,53 +1,147 @@
- #menu {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #580302;
-            color: #fff;
-            padding: 10px 0;
-            z-index: 1000;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-        }
-#menu nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-        }
-#menu nav ul li {
-            display: inline-block;
-        }
-#menu nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            padding: 5px 10px;
-            transition: color 0.3s;
-        }
-#menu nav ul li a:hover {
-            color: #fff;
-        }
-body {
+:root {
+        --bg: #FECEA8;
+        --text: #2a363b;
+        --accent: #e84a5f;
+        --accent-2: #99b898;
+        --transition: 300ms ease;
+}
 
-            padding-bottom: 60px;
-        }
+.theme-alt {
+        --bg: #2a363b;
+        --text: #fecea8;
+        --accent: #e84a5f;
+        --accent-2: #99b898;
+}
+
+#menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--accent);
+        color: var(--text);
+        padding: 10px 0;
+        z-index: 1000;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+#menu nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+}
+
+#menu nav ul li {
+        display: inline-block;
+}
+
+#menu nav ul li a {
+        text-decoration: none;
+        color: var(--text);
+        padding: 5px 10px;
+        transition: color var(--transition);
+}
+
+#menu nav ul li a:hover {
+        color: var(--text);
+}
+
+body {
+        background-color: var(--bg);
+        color: var(--text);
+        padding-bottom: 60px;
+        transition: background-color var(--transition), color var(--transition);
+}
+
 .container {
-            display: flex;
-            flex-direction: column;
-            align-items:flex-end;
-        }
+        margin-top: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap:1em;
+}
 .animation{
-                margin: 1em 0;
-                padding: 1.4em;
-                background-image: linear-gradient(225deg, rgba(var(--theme-red), .68) 0%, rgba(var(--theme-red), .68) 10%, var(--theme-designasion-animation-color) 20%, rgba(var(--theme-red), .68) 25%, rgba(var(--theme-red), .68) 100%);
-                animation: textclip 6s infinite ease-in-out;
-                display: inline-block;
-                background-size: 200% auto;
-                /* animation: gradient 15s ease infinite; */
-                /* background: linear-gradient(60deg, red, yellow, red, yellow, red); */
-                font: 900 1.2em sans-serif;
-                background-clip: text;
-                color: rgba(0, 0, 0, 0.2);
-        }
+        margin-top: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap:1em;
+}
+.photo img {
+        width: 300px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 12);
+}
+
+.animation {
+        margin: 1em 0;
+        padding: 1.4em;
+        display: inline-block;
+        background: linear-gradient(60deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2), var(--accent));
+        background-size: 200% 100%;
+        background-repeat: no-repeat;
+        font: 900 1.2em sans-serif;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        animation: gradient 5s linear infinite; 
+}
+
+/* Применяем градиент и анимацию к самим заголовкам внутри .animation,
+   т.к. у дочерних элементов background-clip на контейнере может не сработать */
+.animation h1,
+.animation h2 {
+        background: linear-gradient(60deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2), var(--accent));
+        background-size: 200% 100%;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        display: inline-block; /* чтобы background-clip корректно работал */
+        animation: gradient 4s linear infinite;
+}
+
+@keyframes gradient {
+from {
+        background-position: 0% 50%;
+}
+to {
+        background-position: 100% 50%;
+}
+}
+
+#setColor {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+}
+#setColor button {
+        background-color: var(--accent);
+        color: var(--text);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color var(--transition), color var(--transition);
+}
+#setColor button:hover {
+        background-color: var(--text);
+        color: var(--accent);
+}
