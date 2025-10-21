@@ -54,7 +54,7 @@
 }
 
 #menu nav ul li a:hover {
-        color: var(--text);
+        color: var(--bg);
 }
 
 body {
@@ -88,10 +88,9 @@ body {
 }
 
 .animation {
-        margin: 1em 0;
-        padding: 1.4em;
+        margin: 2em;
+        padding: 4em;
         display: inline-block;
-        background: linear-gradient(60deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2), var(--accent));
         background-size: 200% 100%;
         background-repeat: no-repeat;
         font: 900 1.2em sans-serif;
@@ -99,30 +98,37 @@ body {
         background-clip: text;
         -webkit-text-fill-color: transparent;
         color: transparent;
-        animation: gradient 5s linear infinite; 
+        animation: gradient 4s linear infinite; 
 }
 
 /* Применяем градиент и анимацию к самим заголовкам внутри .animation,
    т.к. у дочерних элементов background-clip на контейнере может не сработать */
 .animation h1,
 .animation h2 {
-        background: linear-gradient(60deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2), var(--accent));
+        background: linear-gradient(120deg, 
+        var(--accent) 0%,
+        var(--accent) 45%, 
+        var(--accent-2) 50%, 
+        var(--accent) 55%, 
+        var(--accent) 100%);
         background-size: 200% 100%;
         background-repeat: no-repeat;
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
         color: transparent;
-        display: inline-block; /* чтобы background-clip корректно работал */
+        display: inline-block;
         animation: gradient 4s linear infinite;
+        font-size: 50px;
+        margin: 1em;
 }
 
 @keyframes gradient {
 from {
-        background-position: 0% 50%;
+        background-position: 100% 0%;
 }
 to {
-        background-position: 100% 50%;
+        background-position: 0% 0%;
 }
 }
 
