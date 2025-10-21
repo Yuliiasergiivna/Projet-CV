@@ -34,3 +34,47 @@ document.addEventListener('DOMContentLoaded', () => {
         themeBtn.addEventListener('click', toggleTheme);
     }
 });
+
+// Toggle mobile menu via #burger button
+(function() {
+    const burger = document.getElementById('burger');
+    const menuNav = document.querySelector('#menu nav');
+
+    if (!burger || !menuNav) return; // nothing to do if elements missing
+
+    function openMenu() {
+        menuNav.classList.add('active');
+        burger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+        menuNav.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleMenu() {
+        menuNav.classList.toggle('active');
+        const expanded = menuNav.classList.contains('active');
+        burger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+
+    burger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Close when clicking outside the nav
+    document.addEventListener('click', function(e) {
+        if (!menuNav.classList.contains('active')) return;
+        if (!menuNav.contains(e.target) && e.target !== burger) {
+            closeMenu();
+        }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            if (menuNav.classList.contains('active')) closeMenu();
+        }
+    });
+})();

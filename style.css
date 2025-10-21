@@ -12,10 +12,25 @@
         --accent: #e84a5f;
         --accent-2: #99b898;
 }
+#burger {
+        display: none;
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: var(--text);
+        padding: 10px 20px;
+        cursor: pointer;
+        z-index: 1001;
+}
+@media (max-width: 768px){
+        #burger{
+                display: block;
+        }
+}
 
-#menu {
-        position: fixed;
-        bottom: 0;
+#menu nav {
+        /* position: absolute; */
+        bottom: 50px;
         left: 0;
         width: 100%;
         background-color: var(--accent);
@@ -26,11 +41,49 @@
         border-radius: 5px;
         --bs-gutter-x: 1.5rem;
         --bs-gutter-y: 0;
-        display: flex;
+        display: inline-block;
         flex-wrap: wrap;
         margin-top: calc(-1 * var(--bs-gutter-y));
         margin-right: calc(-.5 * var(--bs-gutter-x));
         margin-left: calc(-.5 * var(--bs-gutter-x));
+} 
+#menu nav.active{
+        display: block;
+}
+#menu nav {
+        /* Desktop: visible and horizontal */
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: auto;
+        background-color: var(--accent);
+        color: var(--text);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+}
+
+/* Mobile: hide nav by default and show when .active */
+@media (max-width: 768px) {
+        #menu nav {
+                position: absolute;
+                bottom: 50px;
+                left: 0;
+                width: 100%;
+                background-color: var(--accent);
+                color: var(--text);
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                z-index: 1000;
+        }
+
+        #menu nav.active {
+                display: flex;
+        }
 }
 
 #menu nav ul {
@@ -39,11 +92,13 @@
         margin: 0;
         display: flex;
         justify-content: space-around;
+        align-items: center;
         gap: 20px;
 }
 
 #menu nav ul li {
         display: inline-block;
+        justify-content: space-around;
 }
 
 #menu nav ul li a {
@@ -133,6 +188,8 @@ to {
 }
 
 #setColor {
+        width: 100px;
+        height: auto;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -151,3 +208,60 @@ to {
         background-color: var(--text);
         color: var(--accent);
 }
+
+/* Skills Section */
+.skills {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 20px;
+    text-align: center;
+  }
+
+  .skill {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .skill:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  .skill img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.5s ease;
+  }
+
+  .skill:hover img {
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  .skill p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #1a3c6d;
+  }
+
+.icons {
+
+        margin: 4em ;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+
+        align-items: flex-end;
+        gap: 2rem; 
+  }
+    /* body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  } */
