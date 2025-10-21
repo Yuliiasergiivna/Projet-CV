@@ -140,6 +140,11 @@ body {
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 12);
+        animation: float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .animation {
@@ -243,7 +248,7 @@ to {
   .skill p {
     margin-top: 10px;
     font-weight: bold;
-    color: #1a3c6d;
+    color: var(--text);
   }
 
 .icons {
@@ -257,11 +262,50 @@ to {
         align-items: flex-end;
         gap: 2rem; 
   }
-    /* body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f7fc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  } */
+/*Mes projets*/
+h3{
+        text-align: center;
+        font-size: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+}
+.projets{
+        margin: 2em ;
+        padding: 2em ;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem; 
+}
+.card{
+        margin: 2em ;
+        padding: 2em ;
+        border: 1px solid var(--accent);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        animation: float 3s ease-in-out infinite;
+        background-color: var(--text);
+        color: var(--bg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition), color var(--transition);
+}
+.btn{
+        background-color: var(--accent);
+        color: var(--text);
+}
+.btn:hover{
+        background-color: var(--text);
+        color: var(--accent);
+}
+.card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        background-color: var(--bg);
+        color: var(--text);
+  }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
