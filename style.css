@@ -3,6 +3,7 @@
         --text: #2a363b;
         --accent: #e84a5f;
         --accent-2: #99b898;
+        --accent-3: #ff847c;
         --transition: 300ms ease;
 }
 
@@ -27,6 +28,7 @@
                 display: block;
         }
 }
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 #menu nav {
         /* position: absolute; */
@@ -302,10 +304,117 @@ h3{
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         background-color: var(--bg);
         color: var(--text);
-  }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+}
+footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--accent);
+        color: var(--text);
+        text-align: center;
+        padding: 10px 0;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        z-index: 1000;
+}
+main {
+    padding-bottom: 70px; /* подстрой по высоте футера */
 }
 
+@keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+}
+.social-media {
+        display: flex;
+        transform:none;
+        position: relative; 
+        /* top:50%; */
+        /* left: 2rem; */
+        /* justify-content:flex-start; */
+        flex-direction: column;
+        align-items : center;
+        gap: 1.5rem;
+        margin-top: 5rem;
+}
+
+.social-media i {
+        font-size: 36px;
+        color: var(--text);
+        transition: color var(--transition), transform var(--transition);
+        cursor: pointer;
+}
+
+.social-media i:hover {
+        transform: scale(1.3);
+        color: var(--accent);
+}
+body, .social-media i {
+        transition: background-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+/* === АНИМАЦИЯ ШЕСТЕРЁНОК В ПРАВОМ ВЕРХНЕМ УГЛУ === */
+.gears {
+        position: fixed;
+        top: -50px;
+        right: -50px;
+        z-index: -1; /* позади контента */
+        /* opacity: 0.1; мягкий прозрачный эффект */
+        pointer-events: none; /* не мешает кликам */
+}
+
+.gear {
+        position: absolute;
+        background: url("images/gear.svg") no-repeat center / contain;
+        transform-origin: center;
+        animation: rotateGear 40s linear infinite;
+        filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
+        
+}
+
+/* Большая шестерёнка */
+.gear.large {
+        width: 300px;
+        height: 300px;
+        top: 0;
+        right: 0;
+        position: absolute;
+        z-index: 2;
+        animation: rotateGear 60s linear infinite;
+        /* background: linear-gradient(145deg, var(--accent) 0%, var(--accent-3) 100%);
+        border-radius: 50%; 
+        transition: background var(--transition); */
+        /* animation-duration: 60s; медленнее */
+        /* background-color: var(--accent); */
+}
+
+/* Маленькая шестерёнка */
+.gear.small {
+        width: 200px;
+        height: 200px;
+        top: 140px;
+        right: 230px;
+        animation: rotateGearReverse 35s linear infinite; /* в другую сторону */
+        z-index: 1;
+        position: absolute;
+}
+
+/* Анимация вращения */
+@keyframes rotateGear {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+}
+@keyframes rotateGearReverse {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+}
+
+/* Немного ярче в тёмной теме */
+/* .theme-alt .gears {
+        opacity: 0.15;
+        filter: brightness(1.2);
+} */
+/* body, .gear.large, .gear.small {
+        transition: background-color var(--transition), color var(--transition);
+} */

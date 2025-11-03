@@ -4,19 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/dist/bootstrat/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
     <link rel="stylesheet" href="/style.css">
     <script src="/dist/bootstrat/js/bootstrap.min.js" defer></script>
     <script src="/main.js" defer></script>
     <title>Contact</title>
 </head>
 <body>
-        <header>
+    <header>
         <div id="setColor">
             <button id="btn">Change</button>
         </div>    
     </header>
-
-        <footer>
+    <div class="contact-form">
+        <h3>Contactez-moi</h3>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="_replyto" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </div>
+    <div class="social-media">
+        <a href="https://www.linkedin.com/in/yuliia-krempolska/" target="_blank">
+            <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/Yuliiasergiivna" target="_blank">
+                <i class="bi bi-github"></i>
+        </a>
+        <a href="" target="_blank">
+            <i class="bi bi-envelope-fill"></i>
+        </a>
+    </div>
+    <footer>
         <div id="menu" class="row">
             <button id="burger" aria-label="Toggle menu">
                 ☰
@@ -31,5 +61,6 @@
                 </ul>
             </nav>
         </div>
+    </footer>
 </body>
 </html>
