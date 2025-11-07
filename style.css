@@ -230,6 +230,7 @@ to {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   
   }
 
   .skill:hover {
@@ -248,9 +249,10 @@ to {
   }
 
   .skill p {
-    margin-top: 10px;
-    font-weight: bold;
-    color: var(--text);
+        margin-top: 10px;
+        font-weight: bold;
+        color: var(--text);
+        text-decoration: none;
   }
 
 .icons {
@@ -409,6 +411,113 @@ body, .social-media i {
         from { transform: rotate(0deg); }
         to { transform: rotate(-360deg); }
 }
+
+/* === ABOUT + SKILLS === */
+.about-skills {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  margin: 4rem;
+  flex-wrap: wrap;
+}
+
+h2 {
+  color: var(--accent);
+}
+.about {
+  flex: 1 1 45%;
+  /* font-size: 1.1em;
+  line-height: 1.6; */
+}
+
+.icons {
+  flex: 1 1 45%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  margin: 0;    
+  padding: 0; 
+} 
+.icons h3 {
+  margin-top: 0;   
+}
+
+/* === CV SECTION: Formation & Experience  === */
+.cv {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  margin: 4rem;
+  flex-wrap: wrap;
+}
+
+.cv > div {
+  flex: 1 1 45%;
+}
+
+/* === Timeline стиль === */
+.cv ul {
+  position: relative;
+  list-style: none;
+  padding-left: 30px;
+  margin-top: 1rem;
+}
+
+.cv ul::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--accent);
+}
+
+.cv ul li {
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+.cv ul li::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-2);
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+/* Заголовки */
+.cv h2 {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .about-skills, .cv {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about, .icons, .cv > div {
+    flex: 1 1 100%;
+  }
+
+  .cv ul::before {
+    left: 15px;
+  }
+}
+
 
 /* Немного ярче в тёмной теме */
 /* .theme-alt .gears {

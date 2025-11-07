@@ -1,0 +1,354 @@
+:root {
+        --bg: #FECEA8;
+        --text: #2a363b;
+        --accent: #e84a5f;
+        --accent-2: #99b898;
+        --accent-3: #ff847c;
+        --transition: 300ms ease;
+}
+
+.theme-alt {
+        --bg: #2a363b;
+        --text: #fecea8;
+        --accent: #e84a5f;
+        --accent-2: #99b898;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 50px calc(100vh - 100px) 50px;
+    height: 100vh;
+    background-color: var(--bg);
+    color: var(--text);
+    padding-bottom: 60px;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+#setColor {
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#setColor button {
+    background-color: var(--accent);
+    color: var(--text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+#setColor button:hover {
+    background-color: var(--text);
+    color: var(--accent);
+}
+
+.gears {
+    position: fixed;
+    top: -50px;
+    right: -50px;
+    z-index: -1;
+    /* позади контента */
+    /* opacity: 0.1; мягкий прозрачный эффект */
+    pointer-events: none;
+ 
+}
+
+.gear {
+    position: absolute;
+    background: url("images/gear.svg") no-repeat center / contain;
+    transform-origin: center;
+    animation: rotateGear 40s linear infinite;
+    filter: drop-shadow(0 0 4px var(--bg));
+    transition: background-color var(--transition);
+
+}
+
+.gear.large {
+    width: 300px;
+    height: 300px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+    animation: rotateGear 60s linear infinite;
+
+}
+
+.gear.small {
+    width: 200px;
+    height: 200px;
+    top: 140px;
+    right: 230px;
+    animation: rotateGearReverse 35s linear infinite;
+    /* dans autre coute */
+    z-index: 1;
+    position: absolute;
+}
+
+@keyframes rotateGear {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateGearReverse {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+main {
+    overflow: hidden;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+
+.photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 12);
+    animation: float 3s ease-in-out infinite;
+    width: 300px;
+    height: 60vh;
+}
+
+.photo img {
+    height: fit-content;
+    position: absolute;
+    top: -66px;
+    left: 0;
+    width: 500px;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animation {
+
+    flex-basis: 200px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-top: 20%;
+    margin: 2em;
+    padding: 4em;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    font: 900 1.2em sans-serif;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradient 4s linear infinite;
+}
+
+
+.animation h1,
+.animation h2 {
+    background: linear-gradient(120deg,
+            var(--accent) 0%,
+            var(--accent) 45%,
+            var(--accent-2) 50%,
+            var(--accent) 55%,
+            var(--accent) 100%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    animation: gradient 4s linear infinite;
+    font-size: 50px;
+    margin: 1em;
+}
+
+@keyframes gradient {
+    from {
+        background-position: 100% 0%;
+    }
+
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+footer {
+    overflow: hidden;
+    background-color: var(--accent);
+    color: var(--text);
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+#burger {
+        display: none;
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: var(--text);
+        padding: 10px 20px;
+        cursor: pointer;
+        z-index: 1001;
+}
+
+#menu nav {
+        /* Desktop: visible and horizontal */
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: auto;
+        background-color: var(--accent);
+        color: var(--text);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+}
+
+#menu nav.active{
+        display: block;
+}
+
+#menu nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+}
+
+#menu nav ul li {
+        display: inline-block;
+        justify-content: space-around;
+}
+
+#menu nav ul li a {
+        text-decoration: none;
+        color: var(--text);
+        padding: 5px 10px;
+        transition: color var(--transition);
+}
+
+#menu nav ul li a:hover {
+        color: var(--bg);
+}
+
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+@media screen and (max-width: 1024px) {
+    
+    .animation{
+        max-width: 60%;
+        padding: 1em;
+    }
+
+
+    .gear.large{
+        width: 150px;
+        height: 150px;
+    }
+    .gear.small{
+        width: 100px;
+        height: 100px;
+        top: 70px;
+        right: 115px;
+    }
+
+    .container{
+        justify-content: space-between;
+    }
+
+    .photo{
+        width : 200px;       
+    }
+
+    .photo img{
+        top: -100px;
+        left: -40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #burger{
+        display: block;
+    }
+
+    #menu nav {
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        width: 100%;
+        background-color: var(--accent);
+        color: var(--text);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        z-index: 1000;
+    }
+
+    #menu nav.active {
+        display: flex;
+    }
+
+    .animation {
+        padding: 2em;
+        margin: 0;
+        padding-top: 4em;
+    }
+    
+    .animation h1, .animation h2 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    .animation h1 {
+        margin-bottom: 20px;
+    }
+
+    .container{
+        justify-content: center;
+    }
+
+    .photo{
+        height: 200px;
+        border-radius: 50%;        
+    }
+
+}

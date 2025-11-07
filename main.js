@@ -78,3 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  
+  const params = new URLSearchParams(window.location.search);
+  const project = params.get("project");
+
+  if (project === "pendu") {
+    
+    document.querySelectorAll(".card").forEach(card => card.style.display = "none");
+    
+    const penduCard = Array.from(document.querySelectorAll(".card"))
+      .find(card => card.querySelector(".card-title")?.textContent.includes("Jeu du pendu"));
+    
+    if (penduCard) penduCard.style.display = "block";
+  }
+});
