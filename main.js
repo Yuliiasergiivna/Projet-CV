@@ -1,9 +1,7 @@
 function setColor() {
-    // выбираем кнопку по id
     const btn = document.querySelector('#btn');
     if (!btn) return console.warn('Button #btn not found');
 
-    // применяем цвета как строковые значения
     btn.style.backgroundColor = '#e84a5f';
     btn.style.color = '#fecea8';
     document.body.style.backgroundColor = '#2a363b';
@@ -13,25 +11,43 @@ function setColor() {
 
 // Тема: переключатель между стандартной и альтернативной темой
 function toggleTheme() {
-    const root = document.documentElement; // можно использовать body, но корень удобнее
+    const root = document.documentElement; 
     const alt = root.classList.toggle('theme-alt');
     try {
         localStorage.setItem('themeAlt', alt ? '1' : '0');
     } catch (e) {
-        // localStorage может быть недоступен
     }
+}
+
+function updateThemeIcon() {
+    const icon = document.getElementById('theme-icon');
+    if (!icon) return;
+
+    const isDark = document.documentElement.classList.contains('theme-alt');
+
+    icon.src = isDark 
+        ? `${source}images/moon.png`   // темная тема → луна
+        : `${source}images/sun.png`;         // светлая тема → солнце
+
+    icon.alt = isDark ? "moon icon" : "sun icon";
 }
 
 // Применяем сохранённую тему при загрузке и навешиваем обработчики
 document.addEventListener('DOMContentLoaded', () => {
-    const saved = (function(){ try { return localStorage.getItem('themeAlt'); } catch(e){ return null } })();
+    const saved = (function(){ 
+        try { return localStorage.getItem('themeAlt'); } 
+        catch(e){ return null } 
+    })();
     if (saved === '1') document.documentElement.classList.add('theme-alt');
-
+    updateThemeIcon();
     // кнопка переключения темы (та же #btn используется для демонстрации)
     const themeBtn = document.querySelector('#btn');
     if (themeBtn) {
         // используем toggleTheme как единственный обработчик
-        themeBtn.addEventListener('click', toggleTheme);
+        themeBtn.addEventListener('click', ()=>{
+            toggleTheme();
+            updateThemeIcon();
+        });
     }
 });
 
